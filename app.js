@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // ১. DOM এলিমেন্ট সিলেক্ট ও ক্যাশ করা (Rubric 30% এর জন্য)
 const formContainer = document.getElementById('dynamic-form-container');
 
@@ -74,3 +75,27 @@ passwordField.addEventListener('input', () => {
         strengthLabel.className = 'text-[11px] text-emerald-600 mt-1 font-bold';
     }
 });
+=======
+// ড্যাশবোর্ডের ডায়নামিক মেট্রিিক্স ডাটা
+const analyticsData = [
+    { title: "Total Revenue", value: "$24,500", color: "text-emerald-600", bg: "bg-emerald-50" },
+    { title: "Active Orders", value: "142", color: "text-indigo-600", bg: "bg-indigo-50" },
+    { title: "Low Stock Items", value: "12", color: "text-rose-600", bg: "bg-rose-50" }
+];
+
+// DOM গ্রিড সিলেক্ট করা
+const dashboardGrid = document.getElementById('dashboard-grid');
+
+// ডাটা লুপ চালিয়ে ডায়নামিক কার্ড তৈরি ও পুশ করা
+analyticsData.forEach(card => {
+    dashboardGrid.innerHTML += `
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+            <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wider">${card.title}</h3>
+            <div class="flex justify-between items-center mt-4">
+                <span class="text-3xl font-black text-slate-800">${card.value}</span>
+                <div class="${card.bg} ${card.color} text-xs font-bold px-2.5 py-1 rounded-full"> Live </div>
+            </div>
+        </div>
+    `;
+});
+>>>>>>> d4573e575da94da7c0a11f8bdf15c9d92285c115
