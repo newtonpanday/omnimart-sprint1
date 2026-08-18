@@ -32,7 +32,6 @@ const passwordField = document.getElementById('password-field');
 const strengthBar = document.getElementById('strength-bar');
 const strengthLabel = document.getElementById('strength-label');
 
-
 if (emailField && emailAlert) {
     emailField.addEventListener('input', () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -99,63 +98,4 @@ if (dashboardGrid) {
             </div>
         `;
     });
-}
-
-
-
-if (secureForm) {
-    secureForm.addEventListener('submit', (e) => {
-        e.preventDefault(); 
-        
-        const isEmailOk = emailField ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value) : false;
-        const isPassOk = passwordField ? passwordField.value.length >= 8 : false;
-
-        if (isEmailOk && isPassOk) {
-            formContainer.innerHTML = `
-                <div class="text-center py-4">
-                    <div class="h-12 w-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                    </div>
-                    <h4 class="text-lg font-bold text-slate-800">Credentials Synchronized!</h4>
-                    <p class="text-sm text-slate-500 mt-1">System tokens updated safely. Initializing modules...</p>
-                    <div id="metric-sub-grid" class="grid grid-cols-2 gap-4 mt-6"></div>
-                </div>
-            `;
-            renderDynamicSystemMetrics();
-        } else {
-            alert('Security Audit Failed: Please satisfy validation criteria.');
-        }
-    });
-}
-
-
-function ModularMetricCard(title, diagnosticMetric, indicatorStyle) {
-    const wrapper = document.createElement('div');
-    wrapper.className = "bg-slate-50 p-4 rounded-xl border border-slate-100 text-left";
-    
-    wrapper.innerHTML = `
-        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">${title}</span>
-        <span class="text-xl font-black text-slate-800 mt-1 block" id="val-node"></span>
-        <div class="flex items-center mt-2 text-[11px] text-slate-500">
-            <span class="h-2 w-2 rounded-full ${indicatorStyle} mr-1.5 animate-pulse"></span>
-            Operational
-        </div>
-    `;
-    wrapper.querySelector('#val-node').textContent = diagnosticMetric;
-    return wrapper;
-}
-
-const liveDataLog = [
-    { label: "SSL Handshake", read: "0.42 ms", nodeStyle: "bg-emerald-500" },
-    { label: "Session Tokens", read: "Active (2)", nodeStyle: "bg-indigo-500" }
-];
-
-function renderDynamicSystemMetrics() {
-    const targetGrid = document.getElementById('metric-sub-grid');
-    if (targetGrid) {
-        liveDataLog.forEach(dataItem => {
-            const generatedCardNode = ModularMetricCard(dataItem.label, dataItem.read, dataItem.nodeStyle);
-            targetGrid.appendChild(generatedCardNode);
-        });
-    }
 }
