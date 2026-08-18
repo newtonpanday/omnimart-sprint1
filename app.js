@@ -107,7 +107,7 @@ if (dynamicContainer) {
 const profileContainer = document.getElementById('user-profile-container');
 
 if (profileContainer) {
-    profileContainer.innerHTML = 
+    profileContainer.innerHTML = `
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
             <!-- USER EDIT PROFILE CARD -->
             <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
@@ -157,7 +157,7 @@ if (profileContainer) {
                 </div>
             </div>
         </div>
-    ;
+    `;
 
     // Handle Profile Form Submission
     const editProfileForm = document.getElementById('form-edit-profile');
