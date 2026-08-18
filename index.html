@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniMart - Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 font-sans min-h-screen flex">
+
+    <nav class="w-64 bg-slate-900 text-slate-200 flex flex-col min-h-screen p-5 shadow-xl shrink-0">
+        <div class="border-b border-slate-800 pb-4 mb-6">
+            <h1 id="dashboard-title" class="text-xl font-black tracking-wider text-indigo-400">OmniMart Base</h1>
+        </div>
+        <ul class="space-y-3 flex-grow text-sm font-medium">
+            <li><a href="#" class="block bg-slate-800 text-white px-4 py-2.5 rounded-lg">Dashboard</a></li>
+            <li><a href="#" class="block hover:bg-slate-800 px-4 py-2.5 rounded-lg transition">Products</a></li>
+            <li><a href="#" class="block hover:bg-slate-800 px-4 py-2.5 rounded-lg transition">Orders</a></li>
+        </ul>
+        <div class="text-xs text-slate-500 pt-4 border-t border-slate-800">v1.0.0 Sprint 1</div>
+    </nav>
+
+    <main class="flex-grow flex flex-col min-h-screen">
+        <header class="bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center shadow-sm">
+            <h2 class="text-lg font-bold text-slate-700">System Overview</h2>
+            <div class="text-sm font-medium text-slate-600">Welcome, Admin</div>
+        </header>
+
+        <section class="p-8 flex-grow">
+            <div id="dashboard-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
