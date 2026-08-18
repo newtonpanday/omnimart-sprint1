@@ -2,6 +2,9 @@
 // OMNIMART AUTHENTICATION & USER MANAGEMENT MODULE (Anulipa)
 // =================================================================
 
+
+
+
 const dynamicContainer = document.getElementById('dynamic-form-container');
 
 if (dynamicContainer) {
@@ -96,4 +99,72 @@ if (dynamicContainer) {
         e.preventDefault();
         alert("Account registered successfully! Please sign in.");
     });
+}
+// =================================================================
+// OMNIMART USER PROFILE & ORDER HISTORY MODULE (Anulipa)
+// =================================================================
+
+const profileContainer = document.getElementById('user-profile-container');
+
+if (profileContainer) {
+    profileContainer.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <!-- USER EDIT PROFILE CARD -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h3 class="text-base font-bold text-slate-800 mb-4 border-b border-slate-100 pb-2">
+                    Edit Account Settings
+                </h3>
+                <form id="form-edit-profile" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Full Name</label>
+                        <input type="text" id="edit-name" value="Anulipa Mistry" class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Phone Number</label>
+                        <input type="text" id="edit-phone" value="+880 1700-000000" class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Shipping Address</label>
+                        <textarea id="edit-address" rows="2" class="w-full px-4 py-2 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">Dhaka, Bangladesh</textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded-xl transition">
+                        Update Profile
+                    </button>
+                </form>
+            </div>
+
+            <!-- ORDER HISTORY & TRACKING CARD -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h3 class="text-base font-bold text-slate-800 mb-4 border-b border-slate-100 pb-2">
+                    Recent Order History
+                </h3>
+                <div class="space-y-3">
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex justify-between items-center">
+                        <div>
+                            <p class="text-xs font-bold text-slate-800">#ORD-99281</p>
+                            <p class="text-[11px] text-slate-500">2 Items • ৳ 2,450</p>
+                        </div>
+                        <span class="px-2.5 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-bold rounded-full">Delivered</span>
+                    </div>
+
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex justify-between items-center">
+                        <div>
+                            <p class="text-xs font-bold text-slate-800">#ORD-99304</p>
+                            <p class="text-[11px] text-slate-500">1 Item • ৳ 1,200</p>
+                        </div>
+                        <span class="px-2.5 py-1 bg-amber-100 text-amber-700 text-[10px] font-bold rounded-full">Processing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Handle Profile Form Submission
+    const editProfileForm = document.getElementById('form-edit-profile');
+    if (editProfileForm) {
+        editProfileForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert("Profile info updated successfully!");
+        });
+    }
 }
