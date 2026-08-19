@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // ১. DOM এলিমেন্ট সিলেক্ট ও ক্যাশ করা (Rubric 30% এর জন্য)
 const formContainer = document.getElementById('dynamic-form-container');
 
@@ -75,27 +74,64 @@ passwordField.addEventListener('input', () => {
         strengthLabel.className = 'text-[11px] text-emerald-600 mt-1 font-bold';
     }
 });
-=======
-// ড্যাশবোর্ডের ডায়নামিক মেট্রিিক্স ডাটা
-const analyticsData = [
-    { title: "Total Revenue", value: "$24,500", color: "text-emerald-600", bg: "bg-emerald-50" },
-    { title: "Active Orders", value: "142", color: "text-indigo-600", bg: "bg-indigo-50" },
-    { title: "Low Stock Items", value: "12", color: "text-rose-600", bg: "bg-rose-50" }
+
+const productsData = [
+    { id: 1, name: "Wireless Gaming Mouse", category: "Electronics", price: "৳ 1,850", tag: "Popular" },
+    { id: 2, name: "Mechanical Keyboard (Red Switch)", category: "Electronics", price: "৳ 3,200", tag: "Best Seller" },
+    { id: 3, name: "Minimalist Leather Wallet", category: "Fashion", price: "৳ 950", tag: "New" },
+    { id: 4, name: "Ergonomic Desk Chair", category: "Furniture", price: "৳ 12,500", tag: "Hot" }
 ];
 
-// DOM গ্রিড সিলেক্ট করা
-const dashboardGrid = document.getElementById('dashboard-grid');
+const mainDashboardContainer = document.getElementById('dashboard-grid');
 
-// ডাটা লুপ চালিয়ে ডায়নামিক কার্ড তৈরি ও পুশ করা
-analyticsData.forEach(card => {
-    dashboardGrid.innerHTML += `
-        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
-            <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wider">${card.title}</h3>
-            <div class="flex justify-between items-center mt-4">
-                <span class="text-3xl font-black text-slate-800">${card.value}</span>
-                <div class="${card.bg} ${card.color} text-xs font-bold px-2.5 py-1 rounded-full"> Live </div>
+if (mainDashboardContainer) {
+    const catalogSection = document.createElement('div');
+    catalogSection.className = "col-span-full mt-8 bg-white p-6 rounded-2xl shadow-sm border border-slate-200";
+
+    catalogSection.innerHTML = `
+        <div class="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
+            <div>
+                <h3 class="text-lg font-bold text-slate-800">🛍️ Product Catalog</h3>
+                <p class="text-xs text-slate-500">Explore trending items available on OmniMart</p>
             </div>
+            <span class="text-xs font-semibold bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full">
+                4 Items Displayed
+            </span>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="catalog-grid">
+            ${productsData.map(product => `
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 hover:border-indigo-200 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-bold uppercase px-2 py-0.5 bg-slate-200 text-slate-600 rounded">
+                                ${product.category}
+                            </span>
+                            <span class="text-[10px] font-bold uppercase px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full">
+                                ${product.tag}
+                            </span>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm mt-1">${product.name}</h4>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-200/60 flex justify-between items-center">
+                        <span class="font-black text-indigo-600 text-sm">${product.price}</span>
+                        <button class="add-cart-btn text-xs bg-slate-900 hover:bg-indigo-600 text-white font-medium px-3 py-1.5 rounded-lg transition">
+                            + Add
+                        </button>
+                    </div>
+                </div>
+            `).join('')}
         </div>
     `;
-});
->>>>>>> d4573e575da94da7c0a11f8bdf15c9d92285c115
+
+    mainDashboardContainer.appendChild(catalogSection);
+
+    // Event Listener for Add to Cart Buttons
+    const addBtns = catalogSection.querySelectorAll('.add-cart-btn');
+    addBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            alert('🛒 Item added to your active cart!');
+        });
+    });
+}
