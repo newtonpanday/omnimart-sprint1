@@ -3,21 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OmniMart Home</title>
-    <!-- Tailwind CSS CDN for styling -->
+    <title>OmniMart - Shop</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-slate-100 min-h-screen p-6">
+<body class="bg-slate-50 font-sans min-h-screen flex flex-col">
 
-    <div class="max-w-4xl mx-auto space-y-6">
-        <!-- Dynamic Form & Active Profile Container -->
-        <div id="dynamic-form-container"></div>
+    <!-- NAVBAR -->
+    <header class="bg-slate-800 py-3 px-6 md:px-16 flex flex-col md:flex-row justify-between items-center gap-4 shadow-md">
+        <div class="flex items-center gap-2 text-2xl font-black text-white">
+            <span>Omni<span class="text-emerald-400">Mart</span></span>
+        </div>
 
-        <!-- User Profile & Order History Container -->
-        <div id="user-profile-container"></div>
-    </div>
+        <!-- Search Bar -->
+        <div class="flex w-full md:w-1/2 max-w-xl">
+            <input type="text" id="search-input" placeholder="Search for products..." class="w-full px-4 py-2 text-sm rounded-l-xl focus:outline-none">
+            <button id="search-btn" class="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2 text-sm font-medium rounded-r-xl transition">
+                Search
+            </button>
+        </div>
+    </header>
 
-    <!-- Script File Connection -->
-    <script src="app.js"></script>
+    <!-- MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto px-6 py-8 flex-grow w-full">
+        <!-- Category Filter Buttons -->
+        <div class="flex gap-3 mb-8 overflow-x-auto pb-2">
+            <button onclick="filterCategory('All')" class="px-4 py-2 bg-slate-800 text-white text-xs font-semibold rounded-lg hover:bg-slate-700 transition">All Products</button>
+            <button onclick="filterCategory('Computer Accessories')" class="px-4 py-2 bg-white border border-slate-200 text-slate-700 text-xs font-semibold rounded-lg hover:bg-slate-100 transition">Computer Accessories</button>
+            <button onclick="filterCategory('Smart Gadgets')" class="px-4 py-2 bg-white border border-slate-200 text-slate-700 text-xs font-semibold rounded-lg hover:bg-slate-100 transition">Smart Gadgets</button>
+        </div>
+
+        <!-- Product Grid Container -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <!-- Dynamic products will render here -->
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-6 text-center border-t border-slate-800 mt-auto">
+        &copy; 2026 OmniMart Sprint 1. All rights reserved.
+    </footer>
+
+    <!-- JS Connection -->
+    <script src="product.js"></script>
 </body>
 </html>

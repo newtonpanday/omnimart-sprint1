@@ -61,7 +61,15 @@ function renderProducts(items) {
     `).join('');
 }
 
-// Initial Render
+// Button Click Handler
+function addToCart(id) {
+    const product = products.find(p => p.id === id);
+    if (product) {
+        alert(`Selected: ${product.title}`);
+    }
+}
+
+// Initial Render & Search Setup
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts(products);
 
@@ -86,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Filter Function
+// Category Filter Function
 function filterCategory(categoryName) {
     if (categoryName === 'All') {
         renderProducts(products);
