@@ -75,6 +75,7 @@ passwordField.addEventListener('input', () => {
     }
 });
 
+
 const productsData = [
     { id: 1, name: "Wireless Gaming Mouse", category: "Electronics", price: "৳ 1,850", tag: "Popular" },
     { id: 2, name: "Mechanical Keyboard (Red Switch)", category: "Electronics", price: "৳ 3,200", tag: "Best Seller" },
