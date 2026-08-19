@@ -22,3 +22,47 @@ OmniMart is an integrated e-commerce platform designed to streamline administrat
 2. **NFR2 (Performance)**: Dynamic DOM manipulation shall execute without page reload.
 3. **NFR3 (Security)**: Real-time validation shall prevent weak passwords and invalid email submissions.
 4. **NFR4 (Maintainability)**: Code shall follow standard modular JavaScript practices.
+
+## 5. System Architecture & Database ERD
+
+```mermaid
+erDiagram
+    USERS ||--o{ ORDERS : "places"
+    USERS ||--o{ PRODUCTS : "manages (if Admin)"
+    ORDERS ||--|{ ORDER_ITEMS : "contains"
+    PRODUCTS ||--|{ ORDER_ITEMS : "included in"
+
+    USERS {
+        int user_id PK
+        string full_name
+        string email
+        string password_hash
+        string bio
+        string role
+        timestamp created_at
+    }
+
+    PRODUCTS {
+        int product_id PK
+        string name
+        decimal price
+        int stock_quantity
+        string category
+    }
+
+    ORDERS {
+        int order_id PK
+        int user_id FK
+        decimal total_amount
+        string status
+        timestamp order_date
+    }
+
+    ORDER_ITEMS {
+        int item_id PK
+        int order_id FK
+        int product_id FK
+        int quantity
+        decimal unit_price
+    }
+    
